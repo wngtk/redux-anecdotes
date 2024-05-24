@@ -3,17 +3,6 @@ import { useSelector } from "react-redux"
 
 const Notification = () => {
   const notification = useSelector(state => state.notification)
-  const [show, setShow] = useState(false)
-
-  useEffect(() => {
-    if (notification) {
-      setShow(true)
-      const timer = window.setTimeout(() => {
-        setShow(false)
-      }, 5000)
-      return () => clearTimeout(timer)
-    }
-  }, [notification])
 
   const style = {
     border: 'solid',
@@ -21,7 +10,7 @@ const Notification = () => {
     borderWidth: 1
   }
 
-  if (!show) {
+  if (!notification) {
     return null
   }
 
