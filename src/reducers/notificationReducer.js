@@ -13,11 +13,9 @@ const notificationSlice = createSlice({
 const { addNotification } = notificationSlice.actions
 
 export const setNotification = (content, ms = 5000) => {
-  let timer = null
   return async (dispatch) => {
     dispatch(addNotification(content))
-    clearTimeout(timer)
-    timer = setTimeout(() => {
+    setTimeout(() => {
       dispatch(addNotification(''))
     }, ms)
   }
